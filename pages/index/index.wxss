@@ -1,0 +1,43 @@
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+
+.deleteButton image {
+    z-index: 1;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.deleteButton {
+    display: flex;
+    align-self: flex-end;
+    padding: 50rpx 20rpx 0 20rpx;
+}
+
+.reader_no_shelf {
+    padding: 30px;
+    text-align: center;
+}
+
+.weui-media-box__desc {
+    -webkit-line-clamp: 1;
+    line-height: 1.5;
+}
+
+.weui-media-box__hd_in-appmsg {
+    margin-right: 0rpx;
+}
+
+.weui-footer {
+    position: absolute;
+    bottom: 0;
+    width: 750rpx;
+
+}

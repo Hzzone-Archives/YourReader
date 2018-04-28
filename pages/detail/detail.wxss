@@ -1,0 +1,12 @@
+/* pages/detail/detail.wxss */
+.book_info {
+    display: flex;
+    padding: 10rpx;
+    width: 700rpx;
+    align-items: center;
+}
+.cover {
+    width: 150rpx;
+    height: 200rpx;
+    padding: 50rpx;
+}

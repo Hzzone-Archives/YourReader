@@ -1,0 +1,64 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindconfirm="search" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+
+          
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0 && resultShowed}}">
+            <view class="weui-cell" hover-class="weui-cell_active"  wx:for="{{ searcResults }}" wx:for-item="book" wx:key='_id' data-index='{{index}}' bindtap='goToDetail'>
+                <view class="weui-cell__bd">
+                    <view>{{ book.title }}</view>
+                </view>
+            </view>
+            
+            
+        </view>
+
+        <view class="page__bd">
+            <view class="weui-panel weui-panel_access">
+                <view class="weui-panel__hd">书架</view>
+                    <view wx:if="{{ !book_shelf.length>0 }}" class='weui-media-box__desc reader_no_shelf'>请添加书籍</view>
+                    <view  wx:else class="weui-panel__bd">
+                        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ book_shelf }}" wx:for-item="book" wx:key="_id">
+                            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                                <image class="weui-media-box__thumb" src="/images/default.jpg" style='width: 45px;'/>
+                            </view>
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" bindtap='goToRead' data-index='{{index}}'>
+                                <view>
+                                    <view class="weui-media-box__title">{{ book.title }}</view>
+                                    <view class="weui-media-box__desc">{{ book.author }} | {{ book.lastChapter }}</view>
+                                    <view class="weui-media-box__desc"> 读到 {{ book.lastChapter }}</view>
+                                </view>
+                            </view>
+                            <view class='deleteButton'>
+                                <view catchtap='deleteBook' data-index='{{index}}'>
+                                    <image src='/images/delete.png'></image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+            </view>
+
+        </view>
+
+    </view>
+
+    <view class="weui-footer">
+        <view class="weui-footer__text">Copyright © 2007-2018 YouReader</view>
+    </view>
+    
+</view>

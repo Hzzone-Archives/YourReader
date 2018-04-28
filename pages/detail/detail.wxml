@@ -1,0 +1,12 @@
+<!--pages/detail/detail.wxml-->
+<view class='container'>
+    <view class='book_info'>
+        <image src='/images/default.jpg' class='cover'></image>
+        <view>
+            <view>mdzz</view>
+            <view>mdzz</view>
+        </view>
+    </view>
+    <view class='action_area'>mdzz</view>
+    <view class='book_intro'>啛啛喳喳错</view>
+</view>
