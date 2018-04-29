@@ -35,7 +35,7 @@
                     <view  wx:else class="weui-panel__bd">
                         <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ book_shelf }}" wx:for-item="book" wx:key="_id">
                             <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                                <image class="weui-media-box__thumb" src="/images/default.jpg" style='width: 45px;'/>
+                                <image class="weui-media-box__thumb" src="{{ book.cover }}" style='width: 45px;'/>
                             </view>
                             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" bindtap='goToRead' data-index='{{index}}'>
                                 <view>

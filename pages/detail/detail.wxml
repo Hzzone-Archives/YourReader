@@ -1,12 +1,19 @@
 <!--pages/detail/detail.wxml-->
 <view class='container'>
     <view class='book_info'>
-        <image src='/images/default.jpg' class='cover'></image>
+        <image src='{{ cover }}' class='cover' binderror='errorFunction'></image>
         <view>
-            <view>mdzz</view>
-            <view>mdzz</view>
+            <view class='weui-media-box__title'>{{ book.title }}</view>
+            <view class='weui-media-box__desc'>{{ book.author }}</view>
+            <view class='weui-media-box__desc'>{{ book.cat }} | 共 {{ book.wordCount }} 字</view>
+            <view class='weui-media-box__desc'>最新章节: {{ book.lastChapter }}</view>
         </view>
     </view>
-    <view class='action_area'>mdzz</view>
-    <view class='book_intro'>啛啛喳喳错</view>
+    <view class='action_area'>
+        <button class='weui-btn' type='warn' disabled='true' wx:if="{{ exists }}"> 已在书架 </button>
+        <button class='weui-btn' type='default' bindtap='addBook' wx:else> 加入书架 </button>
+        <button class='weui-btn' type='primary' bindtap='read'> 开始阅读 </button>
+    </view>
+    <view class="weui-panel__hd">简介</view>
+    <view class='book_intro'> {{ book.shortIntro }}</view>
 </view>

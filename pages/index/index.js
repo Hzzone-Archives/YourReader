@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
     data: {
         inputShowed: false,
@@ -7,11 +8,7 @@ Page({
         book_shelf: [],
     },
     onLoad: function (options) {
-        const app = getApp()
-        console.log(app.globalData.book_shelf)
-        this.setData({
-            book_shelf: app.globalData.book_shelf
-        })
+
     },
     showInput: function () {
         this.setData({
@@ -68,20 +65,41 @@ Page({
         wx.navigateTo({
             url: '/pages/detail/detail?book=' + JSON.stringify(this.data.searcResults[index]),
         })
+        
     },
     deleteBook: function (e) {
         const index = e.currentTarget.dataset.index
         console.log(index)
         var that = this
         wx.showActionSheet({
-            itemList: ['删除'],
+            itemList: ['删除', '小说详情'],
             success: function (res) {
                 if (!res.cancel) {
                     // console.log(res.tapIndex)
+                    switch (res.tapIndex) {
+                        case 0:
+                            that.setData({
+                                book_shelf: that.data.book_shelf.splice(0, index)
+                            })
+                            app.globalData.book_shelf = app.globalData.book_shelf.splice(0, index)
+                            wx.setStorage({
+                                key: "books",
+                                data: app.globalData.book_shelf,
+                                success: res => {
+                                    console.log(res.data)
+                                    wx.showToast({
+                                        title: '删除成功',
+                                    })
+                                }
+                            })
+                            break
+                        case 1:
+                            wx.navigateTo({
+                                url: '/pages/detail/detail?book=' + JSON.stringify(app.globalData.book_shelf[index]),
+                            })
+                            break
+                    }
                     
-                    that.setData({
-                        book_shelf: that.data.book_shelf.splice(0, index)
-                    })
                 }
             }
         });
@@ -92,4 +110,17 @@ Page({
             url: '/pages/read/read?book=' + JSON.stringify(this.data.book_shelf[index]),
         })        
     },
+    
+    onShow: function () {
+        const app = getApp()
+        var tmp = JSON.stringify(app.globalData.book_shelf)
+        tmp = JSON.parse(tmp)
+        for (var idx in tmp) {
+            tmp[idx].cover = app.globalData.static_url + tmp[idx].cover
+        }
+        this.setData({
+            book_shelf: tmp
+        })
+        
+    }
 });

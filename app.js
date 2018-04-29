@@ -1,13 +1,33 @@
 App({
   onLaunch: function () {
-
+      try {
+          var res = wx.getStorageInfoSync()
+          var that = this
+          if (!(res.keys.indexOf('books')<0)) {
+              wx.getStorage({
+                  key: 'books',
+                  success: function (res) {
+                      console.log(res.data)
+                      that.globalData.book_shelf = res.data
+                  },
+                  fail: function (res) {
+                      console.log(res.data)
+                  }
+              })
+          } else {
+              try {
+                  wx.setStorageSync('books', [])
+                  this.globalData.book_shelf = []
+                  console.log('no books local found')
+              } catch (e) {
+              }
+          }
+      } catch (e) {
+          // Do something when catch error
+      }
   },
   globalData: {
-      book_shelf: [{
-          _id: "5373898f1032be0155019e73", "title": "儒道至圣", shortIntro: "这是一个读书人掌握天地之力的世界。\n才气在身，诗可杀敌，词能灭军，文章安天下。\n秀才提笔，纸上谈兵；举人杀敌，出口成章；进士一怒，唇枪舌剑。\n圣人驾临，口诛笔伐，可诛人，可判天子无道，以一敌国。\n此时，圣院把持文位，国君掌官位，十国相争，蛮族虎视，群妖作乱。\n此时，无唐诗大兴，无宋词鼎盛，无创新文章，百年无新圣。\n一个默默无闻的寒门子弟，被人砸破头后，挟传世诗词，书惊圣文章，踏上至圣之路。", author: "永恒之火", lastChapter: "第2446章 述职报告",
-      },
-      {
-          _id: "11111111111", "title": "儒道至圣", shortIntro: "这是一个读书人掌握天地之力的世界。\n才气在身，诗可杀敌，词能灭军，文章安天下。\n秀才提笔，纸上谈兵；举人杀敌，出口成章；进士一怒，唇枪舌剑。\n圣人驾临，口诛笔伐，可诛人，可判天子无道，以一敌国。\n此时，圣院把持文位，国君掌官位，十国相争，蛮族虎视，群妖作乱。\n此时，无唐诗大兴，无宋词鼎盛，无创新文章，百年无新圣。\n一个默默无闻的寒门子弟，被人砸破头后，挟传世诗词，书惊圣文章，踏上至圣之路。", author: "永恒之火", lastChapter: "第2446章 述职报告",
-      }]
+      static_url: 'https://statics.zhuishushenqi.com',
+      book_shelf: []
   }
 })
