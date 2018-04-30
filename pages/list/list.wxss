@@ -1,0 +1,7 @@
+/* pages/list/list.wxss */
+
+.weui-cell {
+    font-size: 30rpx;
+    height: 50rpx;
+    padding: 15rpx 15px;
+}

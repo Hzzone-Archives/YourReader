@@ -1,0 +1,11 @@
+<!--pages/list/list.wxml-->
+<!-- <scroll-view scroll-y scroll-into-view="{{toView}}"> -->
+<wxs module="myModule">
+    function changeColor(index, curr_index) {
+        return index==curr_index?'red':'black'
+    }
+    module.exports.changeColor = changeColor
+</wxs>
+<scroll-view scroll-y>
+    <view wx:for="{{ contents }}" wx:for-item="content" wx:key="content" data-index='{{index}}' bindtap='changePrevPage' class='weui-cell' style='color: {{myModule.changeColor(index, curr_index)}};'>{{content}}</view>
+</scroll-view>

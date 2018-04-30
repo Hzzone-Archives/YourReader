@@ -1,2 +1,24 @@
 <!--pages/read/read.wxml-->
-<text>pages/read/read.wxml</text>
+<view class='container'>
+    <!-- <view class="book-title">{{ curr_chapter.title }}</view> -->
+    <view class="content" bindtap='removeAll'>
+        <view wx:for="{{ curr_chapter.body}}" wx:for-item="para" wx:key="para" class='paragraph'>{{ para }}\n</view> 
+        <!-- <text>{{curr_chapter.body}}</text> -->
+        
+    </view>
+    <view class='center_tap' bindtap='showMenu'></view>
+</view>
+
+<view class="chapter-tools" style='display: {{ showMenu }};'>
+    <view class="prevChapter placeholder" bindtap='prevChapter'>上一章</view>
+    <view class="nextChapter placeholder" bindtap='nextChapter'>下一章</view>
+    <view class='bottomMenu weui-flex'>
+        <view class='weui-flex__item'>
+            <view class="placeholder" bindtap='change' data-type='0'>换源</view>
+        </view>
+        <view class='weui-flex__item'>
+            <view class="placeholder" bindtap='change' data-type='1'>目录</view>
+        </view>
+    </view>
+</view>
+

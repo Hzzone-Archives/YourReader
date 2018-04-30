@@ -1,1 +1,58 @@
 /* pages/read/read.wxss */
+.paragraph {
+    text-indent: 2em;
+}
+.center_tap {
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    bottom: 30%;
+}
+.prevChapter {
+    left: 0;
+    position: fixed;
+    bottom: 50%;
+}
+.nextChapter {
+    right: 0;
+    position: fixed;
+    bottom: 50%;
+}
+
+.bottomMenu {
+    align-items: center;    
+    position: fixed;
+    width: 100%;
+    display: -webkit-box;
+    bottom: 0;
+}
+
+.placeholder{
+    padding: 0 10px;
+    text-align: center;
+    background-color: #444444;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+    z-index: 2;
+}
+
+.content {
+    padding: 10rpx;
+    font-size: 30rpx;
+}
+
+
+.listModal {
+    position: fixed;
+    border-radius: 2%;
+    z-index: 3;
+    top: 5%;
+    overflow: scroll;
+    height: 80%;
+    width: 80%;
+    left: 10%;
+    background-color: white;
+}

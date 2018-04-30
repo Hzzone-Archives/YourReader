@@ -7,9 +7,7 @@ Page({
     },
 
     onLoad: function (options) {
-        this.setData({
-            book: JSON.parse(options.book),
-        })
+        var book = JSON.parse(options.book)
 
         var pages = getCurrentPages();
         var prevPage = pages[pages.length - 2];  //上一个页面
@@ -21,15 +19,24 @@ Page({
 
         const app = getApp()
         console.log(app.globalData.static_url)
-        this.setData({
-            cover: app.globalData.static_url + this.data.book.cover
-        })
 
-        var _id_li = app.globalData.book_shelf.map(function (v) { return v._id; });
+        var _id_li = app.globalData.book_shelf.map(function (v) { return v._id; })
         console.log(_id_li)
-        this.setData({
-            exists: !(_id_li.indexOf(this.data.book._id)<0)
-        })
+        var index = _id_li.indexOf(book._id)
+        var exists = !(index < 0)
+        if (exists) {
+            this.setData({
+                exists: exists,
+                book: app.globalData.book_shelf[index],
+                cover: app.globalData.static_url + book.cover
+            })
+        } else {
+            this.setData({
+                exists: exists,
+                book: book,
+                cover: app.globalData.static_url + book.cover
+            })
+        }
         console.log(this.data.book)
     },
 
