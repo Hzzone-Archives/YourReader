@@ -5,3 +5,22 @@
     height: 50rpx;
     padding: 15rpx 15px;
 }
+
+.chageSeq {
+    position: fixed;
+    bottom: 20%;
+    right: 10%;
+    background-color: #006633;
+    border-radius: 10%;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+    font-size: 30rpx;
+    color: #e6e6e6;
+}
+image {
+    width: 30rpx;
+    height: 30rpx;
+}

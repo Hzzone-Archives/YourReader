@@ -55,9 +55,9 @@ Page({
                 method: 'get',
                 success: res => {
                     var booksources = res.data
-                    booksources.sort(function (a, b) {
-                        return new Date(b.updated).getTime() - new Date(a.updated).getTime();
-                    })
+                    // booksources.sort(function (a, b) {
+                    //     return new Date(b.updated).getTime() - new Date(a.updated).getTime();
+                    // })
                     console.log(booksources)
                     var source = booksources[0]
 
@@ -188,7 +188,10 @@ Page({
             success: res => {
                 var curr_chapter = res.data.chapter
                 console.log(curr_chapter)
-                curr_chapter.body = curr_chapter.body.split('\n').map(function (v) {
+                // curr_chapter.body = curr_chapter.body.split('\n').map(function (v) {
+                //     return v.replace(/(^\s*)|(\s*$)/g, "")
+                // })
+                curr_chapter.cpContent = curr_chapter.cpContent.split('\n').map(function (v) {
                     return v.replace(/(^\s*)|(\s*$)/g, "")
                 })
                 that.setData({

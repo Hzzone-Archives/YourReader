@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "2.0.2",
 	"appid": "wxd574158f2209324f",
 	"projectname": "YouReader",
 	"condition": {

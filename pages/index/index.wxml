@@ -46,7 +46,7 @@
                             </view>
                             <view class='deleteButton'>
                                 <view catchtap='deleteBook' data-index='{{index}}'>
-                                    <image src='/images/delete.png'></image>
+                                    <image src='/images/icon_nav_nav.png'></image>
                                 </view>
                             </view>
                         </view>

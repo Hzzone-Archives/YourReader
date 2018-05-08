@@ -1,11 +1,24 @@
 <!--pages/list/list.wxml-->
 <!-- <scroll-view scroll-y scroll-into-view="{{toView}}"> -->
 <wxs module="myModule">
-    function changeColor(index, curr_index) {
-        return index==curr_index?'red':'black'
+    function changeColor(index, curr_index, seq, contents) {
+        if(seq){
+            return index==curr_index?'red':'black'
+        } else {
+            return index==contents.length-curr_index-1?'red':'black'
+        }
+        
     }
     module.exports.changeColor = changeColor
 </wxs>
 <scroll-view scroll-y>
-    <view wx:for="{{ contents }}" wx:for-item="content" wx:key="content" data-index='{{index}}' bindtap='changePrevPage' class='weui-cell' style='color: {{myModule.changeColor(index, curr_index)}};'>{{content}}</view>
+    <view wx:for="{{ contents }}" wx:for-item="content" wx:key="content" data-index='{{index}}' bindtap='changePrevPage' class='weui-cell' style='color: {{myModule.changeColor(index, curr_index, seq, contents)}};'>{{content}}</view>
 </scroll-view>
+<view wx:if='{{seq}}' class='chageSeq' bindtap='chageSeq'>
+    <view>倒序</view>
+    <image src='/images/down.png'></image>
+</view>
+<view wx:else class='chageSeq' bindtap='chageSeq'>
+    <view>顺序</view>
+    <image src='/images/up.png'></image>
+</view>

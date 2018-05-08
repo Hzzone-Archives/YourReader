@@ -7,7 +7,8 @@ Page({
      */
     data: {
         contents: [],
-        curr_index: 0
+        curr_index: 0,
+        seq: true
     },
 
     /**
@@ -106,7 +107,12 @@ Page({
     },
 
     changePrevPage(e) {
-        const index = e.currentTarget.dataset.index
+        var index = 0
+        if (this.data.seq) {
+            index = e.currentTarget.dataset.index
+        } else {
+            index = this.data.contents.length - e.currentTarget.dataset.index - 1
+        }
         console.log(index)
         var pages = getCurrentPages();
         var prevPage = pages[pages.length - 2];  //上一个页面
@@ -118,5 +124,16 @@ Page({
         wx.navigateBack({
             
         })
+    },
+    chageSeq() {
+        this.setData({
+            contents: this.data.contents.reverse(),
+            seq: !this.data.seq
+        })
+        wx.pageScrollTo({
+            scrollTop: 0,
+            duration: 0
+        })
+        
     }
 })

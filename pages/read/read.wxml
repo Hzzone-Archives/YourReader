@@ -2,7 +2,7 @@
 <view class='container'>
     <!-- <view class="book-title">{{ curr_chapter.title }}</view> -->
     <view class="content" bindtap='removeAll'>
-        <view wx:for="{{ curr_chapter.body}}" wx:for-item="para" wx:key="para" class='paragraph'>{{ para }}\n</view> 
+        <view wx:for="{{ curr_chapter.cpContent}}" wx:for-item="para" wx:key="para" class='paragraph'>{{ para }}\n</view> 
         <!-- <text>{{curr_chapter.body}}</text> -->
         
     </view>
